@@ -31,12 +31,15 @@ R studio was used as a suitable tool for this task, it can enables me to perform
 To start with, data was imported to R studio after selecting appropriate directory the unzipped and downloaded CSV files was located on the computer. After which, necessary packages was installed and loaded into R Studio.
 
 `` 
+
 library(tidyverse)
 library(lubridate)
+
 ``
 ## Importing the data
 
 ``
+
 August_2021_tripdata <- read_csv("Aug_2021.csv")
 September_2021_tripdata <- read_csv("Sept_2021.csv")
 October_2021_tripdata <- read_csv("Oct_2021.csv")
@@ -49,11 +52,15 @@ April_2022_tripdata <- read_csv("Apr_2022.csv")
 May_2022_tripdata <- read_csv("May_2022.csv")
 June_2022_tripdata <- read_csv("June_2022.csv")
 July_2022_tripdata <- read_csv("July_2022.csv")
+
+
 ``
 
 ## Checking the imported data for consistency and accuracy
 
 ``
+
+
 str(August_2021_tripdata)
 str(September_2021_tripdata)
 str(October_2021_tripdata)
@@ -66,4 +73,6 @@ str(April_2022_tripdata)
 str(May_2022_tripdata)
 str(June_2022_tripdata)
 str(July_2022_tripdata)
+
+
 ``
