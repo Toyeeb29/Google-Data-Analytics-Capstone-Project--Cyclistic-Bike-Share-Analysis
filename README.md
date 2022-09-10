@@ -29,7 +29,7 @@ I prepared a new folder in my pc called "bike_trips" to download the needed data
 # Process phase
 R studio was used as a suitable tool for this task, it can enables me to perform different tasks such as importing the data,wrangling it, analyzing it, visualising it, documenting and sharing results by markdown files.​
 To start with, data was imported to R studio after selecting appropriate directory the unzipped and downloaded CSV files was located on the computer. After which, necessary packages was installed and loaded into R Studio.
-``library(tidyverse)
+`` library(tidyverse)
 
 
 
