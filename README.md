@@ -301,3 +301,111 @@ the casual rides during the whole year.")
 ``
 
 ![Figure 1](https://user-images.githubusercontent.com/100366028/189542444-da537e9a-30c9-4e59-8e72-febcadcbe566.png)
+
+### Figure 02 - start hours member_casual: distribution
+
+``
+member_casual_hour<-bike_trips %>%ggplot(aes(start_hour, fill=member_casual))+geom_bar()
+member_casual_hour+labs(x="start_hour",
+                        title="Distribution by start_hour", 
+                        caption = " the most busy hours for all riders are in the afternoon from 15h to 19h.") +
+  coord_flip()
+``
+
+![Figure 2](https://user-images.githubusercontent.com/100366028/189542675-4ffda967-01b8-47e7-8499-d4ee7d148426.png)
+
+
+### Figure 03 - days of the week member_casual distribution :
+ make the week days in order
+ 
+ ``
+ bike_trips$day<- ordered(bike_trips$day, levels = c("Mon",  "Tue", "Wed","Thu", "Fri", "Sat", "Sun"))
+``
+
+``
+member_casual_day<-ggplot(bike_trips, aes(day, fill=member_casual))+
+  geom_bar()+coord_flip()
+member_casual_day+labs(x="Week days",
+                       title="Distribution by week days",
+                       captions =  "the daily rides numbers of casual riders are higher
+than the members riders on the weekends") 
+``
+![Figure 3](https://user-images.githubusercontent.com/100366028/189542855-6e287ed3-70a9-4b78-be4a-2affa32deeb5.png)
+
+
+### Figure 04 - month member_casual distribution :
+order the month
+
+``
+bike_trips$month<- ordered(bike_trips$month,
+                          levels = c("Jan",  "Feb", "Mar","Apr", "May", "Jun", "Jul","Aug",  "Sep", "Oct","Nov", "Dec"))
+``
+
+``
+bike_trips %>%
+  ggplot(aes(month, fill=member_casual)) +
+  geom_bar() +
+  labs(x="Month", title="Distribution by month", 
+       caption="  in the festival period the  rides number of casual is higher 
+    than the members riders") + coord_flip()
+    ``
+    
+    ![Figure 4](https://user-images.githubusercontent.com/100366028/189543201-c4500c50-fe0e-4ade-a8ff-c08bfa89659d.png)
+    
+    
+ ### Figure 05 - monthly avrg rides durations by bikes type:   
+ 
+ ``
+ride_duration_month<-bike_trips %>% group_by(member_casual, month,rideable_type ) %>% 
+  summarise(average_ride_period=mean(ride_period) ,.groups = 'drop') %>% 
+  arrange(rideable_type)
+  ``
+  
+  ``
+  ride_duration_month%>% ggplot(aes(month,as.numeric(average_ride_period), 
+                                  colour= member_casual))+geom_point()+
+  facet_wrap('rideable_type') +
+  theme(axis.text.x = element_text(angle = 90))+
+  labs(title="Monthly average rides durations by bikes type",
+       caption = " the highest average is by casual riding docked bikes ")
+       ``
+       
+       ![Figure 5](https://user-images.githubusercontent.com/100366028/189543451-bb9e70a0-956f-420b-a399-49a6d61f0aff.png)
+       
+       
+   ### Figure 06 - daily avrg rides durations by bikes type:
+   
+   ``
+ride_duration_day<-bike_trips %>% 
+  group_by(member_casual, day,rideable_type ) %>%
+  summarise(average_ride_period=mean(ride_period),.groups = 'drop') %>%
+  arrange(rideable_type)
+  ``
+  
+  ``
+  ride_duration_day%>%
+  ggplot(aes(day,as.numeric(average_ride_period), colour= member_casual))+
+  geom_point()+facet_wrap('rideable_type') +
+  theme(axis.text.x = element_text(angle = 90))+
+  labs(title="Daily average rides durations by bikes type", 
+       caption = " the highest average is by casual riding docked bikes ")
+       ``
+       
+       ![Figure 6](https://user-images.githubusercontent.com/100366028/189543576-87873391-a9d1-4311-9794-e6144ae5cea5.png)
+       
+       
+ ### Bike type preferences :
+ 
+ ``
+ type<-ggplot(bike_trips, aes(rideable_type, fill=member_casual)) +
+  geom_bar() 
+type+ labs(x="rideable_type", 
+           title="rideable_type distribution",subtitle="the whole year ",
+           captions=" the classic bikes are the most preferred by members ,
+docked bikes the less but preferred only by casual .")
+``
+![Figure 7](https://user-images.githubusercontent.com/100366028/189543682-618a996a-5347-4139-8f1f-c4207462c467.png)
+
+
+
+# Act phase
