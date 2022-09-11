@@ -411,3 +411,6 @@ docked bikes the less but preferred only by casual .")
 
 
 # Act phase
+- Create a digital application "cyclistic" highlighting the benefits of annual membership and encourage all riders to use it.
+- Be active on the Chicago social media sites to introduce the benefits of annual memberships.
+- Organise bicycle ride competitions for customers every summer period. This lures other passionate bicylcle riders to enlist our services and thus be members.
