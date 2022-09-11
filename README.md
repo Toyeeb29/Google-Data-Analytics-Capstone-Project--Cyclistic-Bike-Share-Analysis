@@ -171,4 +171,118 @@ Average hourly ride
 average_hourly_ride<-aggregate(bike_trips$ride_period ~ bike_trips$member_casual + bike_trips$start_hour, FUN = mean)
 ``
 
+Average ride by bike type
 
+``
+average_ride_type<-aggregate(bike_trips$ride_period ~ bike_trips$member_casual + bike_trips$rideable_type, FUN = mean)
+``
+
+
+riders distribution
+``
+table(bike_trips$member_casual)
+``
+
+### Ride Number:
+by days of the week
+
+``
+daily_ride_trip<-bike_trips %>% 
+  group_by(member_casual, day) %>% 
+  summarise(number_of_rides = n(), .groups = 'drop') %>% 
+  arrange(day)
+  ``
+by hour
+
+``
+hourly_ride_trip<-bike_trips %>% 
+  group_by(member_casual, start_hour) %>% 
+  summarise(number_of_rides = n(), .groups = 'drop') %>% 
+  arrange(start_hour)
+  ``
+  
+  by month
+  
+  ``
+  bike_trips %>% 
+  group_by(member_casual, month) %>% 
+  summarise(number_of_rides = n(), .groups = 'drop') %>% 
+  arrange(month)
+``
+
+
+### By rides number of readable type by member and casual
+
+``
+ride_no_member<-bike_trips%>% 
+  group_by(rideable_type, member_casual) %>% 
+  summarize(number_of_rides = n(), .groups = 'drop')
+``
+
+### By stations:
+Top members stations
+*Create data frame containing only members riders
+
+### Members riders
+
+``
+member_trips <- bike_trips[bike_trips$member_casual == 'member',]
+``
+
+top_5_start_stations_members
+
+``
+top5_member_start_stations<-member_trips %>%drop_na(start_station_name) %>%
+  group_by(start_station_name, member_casual,start_lat, start_lng)%>%
+  summarise(station_count = n(), .groups='drop')%>%
+  arrange(desc(station_count)) %>%head(n=5)
+  ``
+  
+  top_5_end_station_members
+  
+  ``
+  top5_member_end_stations<-member_trips %>%drop_na(end_station_name) %>%
+  group_by(end_station_name, member_casual,end_lat, end_lng)%>%
+  summarise(station_count = n(), .groups='drop')%>%
+  arrange(desc(station_count)) %>%head(n=5)
+top5_member_end_stations
+``
+
+### Casual riders
+Top casuals stations
+*Create data frame containing only casuals riders
+
+``
+casual_trips <- bike_trips[bike_trips$member_casual == 'casual',]
+``
+
+top_5_casual_start_stations
+
+``
+top5_casual_start_stations<-casual_trips %>%drop_na(start_station_name) %>%
+  group_by(start_station_name, member_casual,start_lat, start_lng)%>%
+  summarise(station_count = n(), .groups='drop')%>%
+  arrange(desc(station_count)) %>%head(n=5)
+  ``
+  
+  top_5_casual_end_stations
+  
+  ``
+  top5_casual_end_stations<-casual_trips %>%drop_na(end_station_name) %>%
+  group_by(end_station_name, member_casual,end_lat, end_lng)%>%
+  summarise(station_count = n(), .groups='drop')%>%
+  arrange(desc(station_count)) %>%head(n=5)
+``
+
+
+### Top start stations for all members
+
+``
+top_start_stations<-rbind(top5_member_start_stations, top5_casual_start_stations)
+``
+
+
+``
+top_end_stations <-rbind(top5_member_end_stations, top5_casual_end_stations)
+``
+  
