@@ -370,8 +370,8 @@ ride_duration_month<-bike_trips %>% group_by(member_casual, month,rideable_type 
        caption = " the highest average is by casual riding docked bikes ")
        ``
        
-       ![Figure 5](https://user-images.githubusercontent.com/100366028/189543451-bb9e70a0-956f-420b-a399-49a6d61f0aff.png)
-       
+  ![Figure 5](https://user-images.githubusercontent.com/100366028/189543760-30728d34-7325-4237-b793-b3950cc801d3.png)
+     
        
    ### Figure 06 - daily avrg rides durations by bikes type:
    
@@ -391,7 +391,8 @@ ride_duration_day<-bike_trips %>%
        caption = " the highest average is by casual riding docked bikes ")
        ``
        
-       ![Figure 6](https://user-images.githubusercontent.com/100366028/189543576-87873391-a9d1-4311-9794-e6144ae5cea5.png)
+ ![Figure 6](https://user-images.githubusercontent.com/100366028/189543774-6a282c5f-067e-48db-93db-b3a2c4342d89.png)
+
        
        
  ### Bike type preferences :
