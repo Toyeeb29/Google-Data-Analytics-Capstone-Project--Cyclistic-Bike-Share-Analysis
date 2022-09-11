@@ -291,6 +291,7 @@ top_end_stations <-rbind(top5_member_end_stations, top5_casual_end_stations)
 
 ### Figure 01 - year member_casual distribution:
 
+
 ``
 year_member_casual_distribution<-ggplot(bike_trips, aes(member_casual, fill=member_casual)) +geom_bar(width=0.5) +
   
@@ -299,4 +300,5 @@ year_member_casual_distribution<-ggplot(bike_trips, aes(member_casual, fill=memb
        captions=" the number of member rides is higher than 
 the casual rides during the whole year.")
 ``
+
 ![Figure 1](https://user-images.githubusercontent.com/100366028/189542444-da537e9a-30c9-4e59-8e72-febcadcbe566.png)
