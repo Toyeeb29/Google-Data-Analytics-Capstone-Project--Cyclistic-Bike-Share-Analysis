@@ -72,3 +72,24 @@ str(May_2022_tripdata)
 str(June_2022_tripdata)
 str(July_2022_tripdata)
 ``
+
+## Check for consistency in column and names
+``
+colnames(August_2021_tripdata)
+colnames(September_2021_tripdata)
+colnames(October_2021_tripdata)
+colnames(November_2021_tripdata)
+colnames(December_2021_tripdata)
+colnames(January_2022_tripdata)
+colnames(February_2022_tripdata)
+colnames(March_2022_tripdata)
+colnames(April_2022_tripdata)
+colnames(May_2022_tripdata)
+colnames(June_2022_tripdata)
+colnames(July_2022_tripdata)
+``
+### It clearly shows that column are consistent with no errors, now we can bind our data together for easy analysis.
+
+``
+bike_trips<-rbind(August_2021_tripdata,September_2021_tripdata,October_2021_tripdata,November_2021_tripdata,December_2021_tripdata,January_2022_tripdata,February_2022_tripdata,March_2022_tripdata,April_2022_tripdata,May_2022_tripdata,June_2022_tripdata,July_2022_tripdata)
+``
