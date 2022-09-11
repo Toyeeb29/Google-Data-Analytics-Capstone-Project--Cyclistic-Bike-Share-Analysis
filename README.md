@@ -127,9 +127,7 @@ bike_trips$started_at<-as.POSIXct(bike_trips$started_at)
 
 ``
 bike_trips$start_hour<-format(bike_trips$started_at, "%H")
-
 bike_trips$day<- format(bike_trips$started_at, "%a")
-
 bike_trips$month<- format(bike_trips$started_at, "%b")
 ``
 
