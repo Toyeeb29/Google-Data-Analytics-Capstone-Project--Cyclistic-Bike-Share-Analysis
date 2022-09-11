@@ -93,3 +93,85 @@ colnames(July_2022_tripdata)
 ``
 bike_trips<-rbind(August_2021_tripdata,September_2021_tripdata,October_2021_tripdata,November_2021_tripdata,December_2021_tripdata,January_2022_tripdata,February_2022_tripdata,March_2022_tripdata,April_2022_tripdata,May_2022_tripdata,June_2022_tripdata,July_2022_tripdata)
 ``
+### understanding the data
+``
+glimpse(bike_trips)
+``
+### It shows that we have 5,860,776 rows and 13 columns
+### Checking for duplicate
+``
+bike_trip<- bike_trips[!duplicated( bike_trips), ]
+``
+### No duplicate found
+### Next thing to do is add a new column for rides period in minutes:
+
+``
+bike_trips$ride_period <- difftime(bike_trips$ended_at, bike_trips$started_at, units = "mins")
+``
+
+### Check the new added column
+
+``
+bike_trips$ride_period %>% head(10)
+``
+
+### Add columns that list the date, month, day,hour of each ride:
+Convert 'started_at' column from character to POSIXct to extract hour,day,month from date
+
+
+``
+bike_trips$started_at<-as.POSIXct(bike_trips$started_at)
+``
+
+### Add columns that list the date, month, day,hour of each ride:
+
+``
+bike_trips$start_hour<-format(bike_trips$started_at, "%H")
+
+bike_trips$day<- format(bike_trips$started_at, "%a")
+
+bike_trips$month<- format(bike_trips$started_at, "%b")
+``
+
+### Now that we have cleaned and process our data, we can go to analysis phase
+
+
+# Analysis phase
+### Rides period for all riders: 
+After exploring the ride_period values, we conclude that it is essential to remove the outliers with the aim to have meaningful values in our analysis(outliers= <1st qu. 1.5 & >3rd qu 1.5) 
+
+
+``
+bike_trips[!(bike_trips$ride_period < 6.37 *1.5 | bike_trips$ride_period> 20.60 *1.5), ]
+``
+
+### Convert "ride_period" from Factor to numeric to further run calculations
+
+
+``
+bike_trips$ride_period <- as.numeric(as.character(bike_trips$ride_period))
+is.numeric(bike_trips$ride_period)
+``
+
+
+### Rides period : members vs casuals riders:
+average on days of the week
+
+``
+bike_trips$avg_daily_ride<-aggregate(bike_trips$ride_period ~ bike_trips$member_casual + bike_trips$day , FUN=mean)
+``
+
+Average monthly ride
+
+``
+average_monthly_ride<-aggregate(bike_trips$ride_period ~ bike_trips$member_casual +bike_trips$month, FUN = mean)
+``
+
+Average hourly ride
+
+``
+average_hourly_ride<-aggregate(bike_trips$ride_period ~ bike_trips$member_casual + bike_trips$start_hour, FUN = mean)
+``
+
+
+
