@@ -350,7 +350,8 @@ bike_trips %>%
     than the members riders") + coord_flip()
     ``
     
-    ![Figure 4](https://user-images.githubusercontent.com/100366028/189543201-c4500c50-fe0e-4ade-a8ff-c08bfa89659d.png)
+![Figure 4](https://user-images.githubusercontent.com/100366028/189543877-d8445a27-8b57-4036-9c92-2d5757094cb9.png)
+
     
     
  ### Figure 05 - monthly avrg rides durations by bikes type:   
