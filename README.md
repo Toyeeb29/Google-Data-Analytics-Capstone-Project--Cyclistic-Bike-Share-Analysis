@@ -1,5 +1,6 @@
 # Google-Data-Analytics-Capstone-Project--Cyclistic-Bike-Share-Analysis
 This is a capstone project carried out by me to demonstrate my problem-solving skills in data analysis after completing the Google Data Analytics Professional Certification Course
+![bike](https://user-images.githubusercontent.com/100366028/192089599-eb221277-4127-4a38-ae78-5c3817834f53.jpeg)
 
 -------
 # Introduction:
